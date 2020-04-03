@@ -20,6 +20,9 @@ namespace PowerlineTracker.Models
         [Display(Name = "Служебные записки")]
         public List<InternalNote> InternalNotes { get; set; }
 
+        [Display(Name = "Комментарии")]
+        public string Comments { get; set; }
+
         public int ID { get; set; }
     }
 }

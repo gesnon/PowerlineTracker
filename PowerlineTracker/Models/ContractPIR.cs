@@ -8,19 +8,18 @@ namespace PowerlineTracker.Models
 {
     public class ContractPIR
     {
-        [Display (Name = "Номер договора ПИР") ]
+        [Display(Name = "Номер договора ПИР")]
         public int Number { get; set; }
 
-        [Display(Name = "Дата заключения договора")]
+        [Display(Name = "Дата заключения договора ПИР")]
+        [DisplayFormat(DataFormatString ="{0:dd.MM.yyyy}")]
         public DateTime DateOfSigned { get; set; }
 
-        [Display(Name = "Тип договора")]
-        public string TypeOfContract { get; set; }
-
         [Display(Name = "Дата окончания ПИР")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime DateOfComplete { get; set; }
 
-        [Display(Name = "Сумма договора")]
+        [Display(Name = "Сумма договора ПИР")]
         public decimal ContractSum { get; set; }
 
         public int ID { get; set; }

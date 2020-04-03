@@ -11,19 +11,19 @@ namespace PowerlineTracker.Models
         [Display(Name = "Номер договора СМР")]
         public int Number { get; set; }
 
-        [Display(Name = "Дата заключения договора")]
+        [Display(Name = "Дата заключения договора СМР")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime DateOfSigned { get; set; }
-
-        [Display(Name = "Тип договора")]
-        public string TypeOfContract { get; set; }
-
-        [Display(Name = "Дата окончания 1 этапа")]
+        
+        [Display(Name = "Дата окончания 1 этапа СМР")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime? DateOfCompleteFirstStage { get; set; }
 
-        [Display(Name = "Дата окончания 2 этапа")]
+        [Display(Name = "Дата окончания 2 этапа СМР")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime? DateOfCompleteSecondtStage { get; set; }
 
-        [Display(Name = "Сумма договора")]
+        [Display(Name = "Сумма договора СМР")]
         public decimal ContractSum { get; set; }
         
         public int ID { get; set; }
