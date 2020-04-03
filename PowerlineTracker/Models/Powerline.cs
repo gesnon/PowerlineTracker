@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace PowerlineTracker.Models
+{
+    public class Powerline
+    {
+        [Display(Name = "Наименование объекта")]
+        public string Name { get; set; }
+
+        [Display(Name = "Договор ПИР")]
+        public ContractPIR ContractPIR { get; set; }
+
+        [Display(Name = "Договор СМР")]
+        public ContractSMR ConractSMR { get; set; }
+
+        [Display(Name = "Служебные записки")]
+        public List<InternalNote> InternalNotes { get; set; }
+
+        public int ID { get; set; }
+    }
+}

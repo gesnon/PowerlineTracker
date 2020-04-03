@@ -1,0 +1,77 @@
+﻿@model PowerlineTracker.Models.Powerline
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Наименование объекта</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPIR.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPIR.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPIR.DateOfSigned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPIR.DateOfSigned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPIR.TypeOfContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPIR.TypeOfContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPIR.DateOfComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPIR.DateOfComplete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPIR.ContractSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPIR.ContractSum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalNotes)
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Список СЗ", "Index","InternalNote", new { id = Model.ID }, new { target = "_blank"}) |
+        </dd>
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

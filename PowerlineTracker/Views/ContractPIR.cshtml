@@ -1,0 +1,58 @@
+﻿@model PowerlineTracker.Models.ContractPIR
+
+@{
+    ViewBag.Title = "ContractPIR";
+}
+
+<h2>ContractPIR</h2>
+
+<div>
+    <h4>ContractPIR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfSigned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfSigned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfComplete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractSum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
