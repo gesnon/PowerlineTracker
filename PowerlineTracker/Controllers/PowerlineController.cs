@@ -88,7 +88,7 @@ namespace PowerlineTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] Powerline powerline)
+        public ActionResult Edit([Bind(Include = "ID,Name,Comments")] Powerline powerline)
         {
             if (ModelState.IsValid)
             {
