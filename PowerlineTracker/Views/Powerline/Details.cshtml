@@ -20,53 +20,85 @@
 
     </dl>
 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractPIR.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractPIR.DateOfSigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractPIR.DateOfComplete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractPIR.ContractSum)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ContractPIR.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ContractPIR.DateOfSigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ContractPIR.DateOfComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ContractPIR.ContractSum)
+            </td>
+        </tr>
+
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ConractSMR.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConractSMR.DateOfSigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConractSMR.DateOfCompleteFirstStage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConractSMR.DateOfCompleteSecondtStage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConractSMR.ContractSum)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ConractSMR.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ConractSMR.DateOfSigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ConractSMR.DateOfCompleteFirstStage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ConractSMR.DateOfCompleteSecondtStage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ConractSMR.ContractSum)
+            </td>
+        </tr>
+
+    </table>
+
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractPIR.Number)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractPIR.Number)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractPIR.DateOfSigned)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractPIR.DateOfSigned)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractPIR.TypeOfContract)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractPIR.TypeOfContract)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractPIR.DateOfComplete)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractPIR.DateOfComplete)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractPIR.ContractSum)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractPIR.ContractSum)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.InternalNotes)
         </dt>
 
         <dd>
-            @Html.ActionLink("Список СЗ", "Index","InternalNote", new { id = Model.ID }, new { target = "_blank"}) |
+            @Html.ActionLink("Список СЗ", "Index", "InternalNote", new { id = Model.ID }, new { target = "_blank" }) |
         </dd>
     </dl>
 
