@@ -23,6 +23,8 @@ namespace PowerlineTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            ViewData["PowerlineID"] = id;
+
             var dataIN = db.InternalNotes.Where(q => q.PowerlineID==id).ToList();
 
             return View(dataIN);
@@ -54,13 +56,13 @@ namespace PowerlineTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Number,Date,Theme,Department")] InternalNote internalNote)
-        {
+        public ActionResult Create([Bind(Include = "ID,PowerlineID,Number,Date,Theme,Department")] InternalNote internalNote)
+        {                       
             if (ModelState.IsValid)
             {
                 db.InternalNotes.Add(internalNote);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = internalNote.PowerlineID});
             }
 
             return View(internalNote);
@@ -92,7 +94,7 @@ namespace PowerlineTracker.Controllers
             {
                 db.Entry(internalNote).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = internalNote.PowerlineID });
             }
             return View(internalNote);
         }
@@ -120,7 +122,7 @@ namespace PowerlineTracker.Controllers
             InternalNote internalNote = db.InternalNotes.Find(id);
             db.InternalNotes.Remove(internalNote);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = internalNote.PowerlineID });
         }
 
         protected override void Dispose(bool disposing)
