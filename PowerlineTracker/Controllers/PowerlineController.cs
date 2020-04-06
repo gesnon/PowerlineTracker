@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -24,6 +25,19 @@ namespace PowerlineTracker.Controllers
                 .Include(i => i.InternalNotes)
                 .ToList();
             return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile()
+        {
+            //this.Request.Files содержит все файлы, которые были отправлены с формы
+            if (this.Request.Files.Count > 0)
+            {
+                var file = this.Request.Files[0];
+                //тут нужно будет вызывать сервис для обработки файла и добавления записей в базу
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: Powerline/Details/5
