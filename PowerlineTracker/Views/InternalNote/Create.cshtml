@@ -5,12 +5,16 @@
 }
 
 <h2>Create</h2>
-
-
-@using (Html.BeginForm())
+@*Create - название метода из контроллера
+InternalNote - название контроллера
+Request это текущий запроc. В моем случае его адрес выглядит так: http://localhost:50562/InternalNote/Create?PowerlineID=1
+Все что идет после ? называется QueryString
+Request.QueryString["PowerlineID"] получение параметра PowerlineID из QueryString
+*@
+@using (Html.BeginForm("Create", "InternalNote", new { PowerlineID = Request.QueryString["PowerlineID"] }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>InternalNote</h4>
         <hr />
@@ -22,11 +26,6 @@
                 @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <input style="display:none" type="number" id="PowerlineID"/>
-        <script type="text/javascript">
-        document.getElementById("PowerlineID").value=@ViewData["PowerlineID"];
-        </script>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -57,7 +57,8 @@ namespace PowerlineTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,PowerlineID,Number,Date,Theme,Department")] InternalNote internalNote)
-        {                       
+        {               
+            //теперь в PowerlienID будет то, что мы передали в представлении
             if (ModelState.IsValid)
             {
                 db.InternalNotes.Add(internalNote);
