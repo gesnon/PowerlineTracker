@@ -9,6 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@*UploadFile- название метода из контроллера
+Powerline - название контроллера
+enctype определяет способ кодирования данных формы при их отправке на сервер.
+Если используется поле для отправки файла (input type="file"), следует определить атрибут enctype как multipart/form-data.
+Input с типом "submit" используется для отправки данных на сервер*@
+@using (Html.BeginForm("UploadFile", "Powerline", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="Upload file" />
+}
+
 <table class="table">
     <tr>
         <th>
@@ -23,23 +34,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContractPIR.Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConractSMR.Number)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractPIR.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConractSMR.Number)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
