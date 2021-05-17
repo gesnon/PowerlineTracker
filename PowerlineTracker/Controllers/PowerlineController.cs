@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using OfficeOpenXml;
 using PowerlineTracker.DAL;
 using PowerlineTracker.Models;
 
@@ -132,6 +135,59 @@ namespace PowerlineTracker.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public byte[] BuildFile()
+        {
+            string tempDir = Path.GetTempPath();
+            var tempFile = Path.Combine(tempDir, Guid.NewGuid() + ".xlsx");
+
+            using (var package = new ExcelPackage())
+            {
+                List<TypeOfContract> types = new List<TypeOfContract> { new TypeOfContract { ID = 1, Name = "NameOne" }, new TypeOfContract { ID = 2, Name = "NameTwo" }, new TypeOfContract { ID = 3, Name = "NameThree" } };
+
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Report"); // Добавляет в эксель новый лист
+                SaveToExcell(worksheet, types);
+                var xlFile = GetFileInfo(tempFile);
+                package.SaveAs(xlFile);
+            }
+
+            byte[] file = new byte[0];            
+ 
+            if (System.IO.File.Exists(tempFile))
+            {
+                file = System.IO.File.ReadAllBytes(tempFile);
+                System.IO.File.Delete(tempFile);
+            }
+
+            return file;
+        }
+
+        private FileInfo GetFileInfo(string file, bool deleteIfExists = true)
+        {
+            var fi = new FileInfo(file);
+            if (deleteIfExists && fi.Exists)
+            {
+                fi.Delete();
+            }
+            return fi;
+        }
+        public void SaveToExcell(ExcelWorksheet worksheet, List<TypeOfContract> typesOFContract)
+        {
+            for (int i = 0; i < typesOFContract.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value = $"ID: {typesOFContract[i].ID} ";
+                worksheet.Cells[i + 2, 2].Value = $"Наименование: {typesOFContract[i].Name}";
+
+            }
+        }
+        public IHttpActionResult DownloadFile() {
+
+            byte[] buildFile = BuildFile();
+
+            var Stream = new MemoryStream(buildFile);
+
+            return new FileResult(Stream, Request, "TypesOfContract");
         }
     }
 }
